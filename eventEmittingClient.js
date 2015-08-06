@@ -4,13 +4,11 @@ var vzStat = require('./'),
     pb = require('pretty-bytes'),
     _ = require('underscore'),
     speedometer = require('speedometer');
+var EE = require('events').EventEmitter;
 
+module.exports.E = new EE();
 
-module.exports = function() {
-
-    var EE = require('events').EventEmitter;
-
-    module.exports.E = new EE();
+module.exports.Start = function(Options) {
 
     var Freq = 2000;
     var VMs = {};
