@@ -61,7 +61,7 @@ vzIO.E.on('VMs', function(VMs) {
     }];
     _.each(dVMs, function(vm, index, arr) {
         var Row = ["✓", c.green.bold(vm.ctid), c.yellow.bold(vm.Rate)];
-	if(vm.Rate.length>0)
+	if(vm.Rate.split(' ')[0].length>0)
         t.push(Row);
     });
 
