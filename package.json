@@ -1,0 +1,26 @@
+{
+  "name": "node-openvz-vm-io-analyzer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binRick/node-openvz-vm-io-analyzer.git"
+  },
+  "author": "Rick Blundell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/binRick/node-openvz-vm-io-analyzer/issues"
+  },
+  "homepage": "https://github.com/binRick/node-openvz-vm-io-analyzer#readme",
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "pretty-bytes": "^2.0.1",
+    "prettyjson": "^1.1.2",
+    "speedometer": "^0.1.4",
+    "underscore": "^1.8.3"
+  }
+}
