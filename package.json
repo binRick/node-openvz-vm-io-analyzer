@@ -19,9 +19,13 @@
   "dependencies": {
     "chalk": "^1.1.0",
     "cli-clear": "^1.0.4",
+    "humanize-time": "0.0.2",
+    "moment": "^2.10.6",
     "pretty-bytes": "^2.0.1",
     "prettyjson": "^1.1.2",
     "speedometer": "^0.1.4",
+    "terminal-table": "0.0.12",
+    "trim": "0.0.1",
     "underscore": "^1.8.3"
   }
 }
