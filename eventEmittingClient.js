@@ -10,9 +10,9 @@ module.exports.E = new EE();
 
 module.exports.Start = function(Options) {
 
-    var Freq = 2000;
+    var Freq = 1000;
     var VMs = {};
-    var debug = false;
+    var debug = true;
 
     setInterval(function() {
         vzStat.collectReads({}, function(e, reads) {
@@ -25,20 +25,22 @@ module.exports.Start = function(Options) {
                     VMs[read.ctid] = {
                         ctid: read.ctid,
                         updates: 0,
-                        reads: 0,
-                        totalReads: 0,
                         startReads: read.reads,
+		    lastReads: read.reads,
                         speed: new speedometer(Freq / 1000),
                         curRate: 0,
+                        intervalReads: read.reads,
                         curRatePretty: '',
                         rates: []
                     };
 
                 else {
                     VMs[read.ctid].updates++;
-                    VMs[read.ctid].curRate = VMs[read.ctid].speed(read.reads - VMs[read.ctid].startReads);
-                    VMs[read.ctid].curRatePretty = pb(Math.round(VMs[read.ctid].curRate, 0)) + '/sec';
                     VMs[read.ctid].Frequency = Freq;
+		   // - VMs[read.ctid].lastReads;
+                    VMs[read.ctid].curRate = VMs[read.ctid].speed(read.reads - VMs[read.ctid].lastReads);
+                    VMs[read.ctid].curRatePretty = pb(Math.round(VMs[read.ctid].curRate, 0)) + '/sec';
+                    VMs[read.ctid].lastReads = read.reads;
                     VMs[read.ctid].rates.push({
                         ts: new Date().getTime(),
                         rate: VMs[read.ctid].curRate
