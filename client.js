@@ -22,15 +22,15 @@ setInterval(function() {
                     startReads: read.reads,
                     speed: new speedometer(Freq / 1000),
                     curRate: 0,
-		    curRatePretty: '',
+                    curRatePretty: '',
                     rates: []
                 };
 
             else {
                 VMs[read.ctid].updates++;
                 VMs[read.ctid].curRate = VMs[read.ctid].speed(read.reads - VMs[read.ctid].startReads);
-		VMs[read.ctid].curRatePretty = pb(Math.round(VMs[read.ctid].curRate,0)) + '/sec';
-		VMs[read.ctid].Frequency = Freq;
+                VMs[read.ctid].curRatePretty = pb(Math.round(VMs[read.ctid].curRate, 0)) + '/sec';
+                VMs[read.ctid].Frequency = Freq;
                 VMs[read.ctid].rates.push({
                     ts: new Date().getTime(),
                     rate: VMs[read.ctid].curRate
@@ -38,15 +38,15 @@ setInterval(function() {
             }
         });
 
-VMs = _.toArray(VMs);
+        VMs = _.toArray(VMs);
 
 
         _.each(VMs, function(vm) {
-	if(debug){
-            if (vm && vm.curRate && vm.curRate > 0)
-                console.log(vm.ctid, vm.curRatePretty);
-	//	console.log(pj.render(vm));
-	}
+            if (debug) {
+                if (vm && vm.curRate && vm.curRate > 0)
+                    console.log(vm.ctid, vm.curRatePretty);
+                //	console.log(pj.render(vm));
+            }
         });
     });
 }, Freq);
