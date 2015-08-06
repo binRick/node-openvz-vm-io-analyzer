@@ -1,7 +1,18 @@
 var vzIO = require('./eventEmittingClient');
 
+_ = require('underscore');
+
 vzIO.E.on('VMs', function(VMs) {
-    console.log('wow so vms', VMs[0]);
+
+	var dVMs = VMs.map(function(vm){
+		var O = {
+			ctid: vm.ctid,
+			Rate: vm.curRatePretty,
+		};
+		return O;
+	});
+
+	console.log(JSON.stringify(dVMs));
 });
 
 vzIO.Start();

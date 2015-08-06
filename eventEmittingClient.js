@@ -12,7 +12,7 @@ module.exports.Start = function(Options) {
 
     var Freq = 2000;
     var VMs = {};
-    var debug = true;
+    var debug = false;
 
     setInterval(function() {
         vzStat.collectReads({}, function(e, reads) {
